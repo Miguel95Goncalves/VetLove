@@ -7,19 +7,9 @@ import java.util.Scanner;
 public class GestaoCliente {
 	Scanner read=(new Scanner(System.in));
 	
-	public void addCliente(ArrayList<Cliente> listaCli){
-		String nome,morada,email,telefone;
+	public void addCliente(ArrayList<Cliente> listaCli,String nome,String morada,String email,String telefone){
+		
 		Cliente cli;
-		
-		System.out.println("Introduza o nome do cliente: ");
-		nome=read.nextLine();
-		System.out.println("Introduza a morada do cliente: ");
-		morada=read.nextLine();
-		System.out.println("Introduza o email do cliente: ");
-		email=read.nextLine();
-		System.out.println("Introduza o telefone do cliente: ");
-		telefone=read.nextLine();
-		
 		listaCli.add(cli=new Cliente(listaCli.size()+1,nome,morada,email,telefone));
 	}
 	
@@ -31,6 +21,27 @@ public class GestaoCliente {
 			System.out.println("EMAIL: "+listaCli.get(i).getEmail());
 			System.out.println("Telefone: "+listaCli.get(i).getTelefone());
 		}
+	}
+	
+	public Cliente procurarClienteID(ArrayList<Cliente> listaCli,int id){
+		for(Cliente c : listaCli)
+		{
+			if(c.getId() == id) return c;
+		}
+		return null;
+	}
+	
+	public float calcularGasto(ArrayList<Cliente> listaCli,int id){
+		float total=0;
+		
+		for(int i=0;i<listaCli.get(id).getAnimais().size();i++)
+		{
+			for(int j=0;j<listaCli.get(id).getAnimais().get(i).getFicha().getVacinas().size();j++)
+			{
+				total+=listaCli.get(id).getAnimais().get(i).getFicha().getVacinas().get(j).getPreco();
+			}
+		}
+		return total;
 	}
 	
 }

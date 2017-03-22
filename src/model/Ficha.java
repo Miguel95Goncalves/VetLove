@@ -1,42 +1,28 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Ficha {
-	private String data;
-	private String nome_vacina;
-	private float preco;
-	private Animal animal;
+	private ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+	private ArrayList<Vacina> vacinas = new ArrayList<Vacina>();
 	
-	public Ficha(String data, String nome_vacina, float preco, Animal animal) {
+	public Ficha(ArrayList<Consulta> consultas, ArrayList<Vacina> vacinas) {
 		super();
-		this.data = data;
-		this.nome_vacina = nome_vacina;
-		this.preco = preco;
-		this.animal = animal;
+		this.consultas = consultas;
+		this.vacinas = vacinas;
 	}
 	
-	public String getData() {
-		return data;
+	public ArrayList<Consulta> getConsultas() {
+		return consultas;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setConsultas(ArrayList<Consulta> consultas) {
+		this.consultas = consultas;
 	}
-	public String getNome_vacina() {
-		return nome_vacina;
+	public ArrayList<Vacina> getVacinas() {
+		return vacinas;
 	}
-	public void setNome_vacina(String nome_vacina) {
-		this.nome_vacina = nome_vacina;
-	}
-	public float getPreco() {
-		return preco;
-	}
-	public void setPreco(float preco) {
-		this.preco = preco;
-	}
-	public Animal getAnimal() {
-		return animal;
-	}
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
+	public void setVacinas(ArrayList<Vacina> vacinas) {
+		this.vacinas = vacinas;
 	}
 	
 }

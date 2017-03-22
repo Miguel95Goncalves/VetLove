@@ -4,14 +4,21 @@ public class Animal {
 	private String classificacao;
 	private String raca;
 	private String data_nasc;
-	private Cliente cliente;
+	private Ficha ficha;
 	
-	public Animal(String classificacao, String raca, String data_nasc, Cliente cliente) {
+	public Animal(String classificacao, String raca, String data_nasc, Ficha ficha) {
 		super();
 		this.classificacao = classificacao;
 		this.raca = raca;
 		this.data_nasc = data_nasc;
-		this.cliente = cliente;
+		this.ficha = ficha;
+	}
+	
+	public Animal(String classificacao, String raca, String data_nasc) {
+		super();
+		this.classificacao = classificacao;
+		this.raca = raca;
+		this.data_nasc = data_nasc;
 	}
 
 	public String getClassificacao() {
@@ -38,12 +45,12 @@ public class Animal {
 		this.data_nasc = data_nasc;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Ficha getFicha() {
+		return ficha;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setFicha(Ficha ficha) {
+		this.ficha = ficha;
 	}
 	
 }
