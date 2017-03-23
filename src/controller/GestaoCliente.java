@@ -8,9 +8,7 @@ public class GestaoCliente {
 	Scanner read=(new Scanner(System.in));
 	
 	public void addCliente(ArrayList<Cliente> listaCli,String nome,String morada,String email,String telefone){
-		
-		Cliente cli;
-		listaCli.add(cli=new Cliente(listaCli.size()+1,nome,morada,email,telefone));
+		listaCli.add(new Cliente(listaCli.size()+1,nome,morada,email,telefone));
 	}
 	
 	public void listarClientes(ArrayList<Cliente> listaCli){

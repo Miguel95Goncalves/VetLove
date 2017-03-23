@@ -6,6 +6,12 @@ public class Ficha {
 	private ArrayList<Consulta> consultas = new ArrayList<Consulta>();
 	private ArrayList<Vacina> vacinas = new ArrayList<Vacina>();
 	
+	public Ficha() {
+		super();
+		this.consultas = new ArrayList<Consulta>();
+		this.vacinas = new ArrayList<Vacina>();
+	}
+	
 	public Ficha(ArrayList<Consulta> consultas, ArrayList<Vacina> vacinas) {
 		super();
 		this.consultas = consultas;
