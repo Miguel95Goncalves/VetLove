@@ -48,17 +48,16 @@ public class FormCliente {
 				id = read.nextInt();
 				Cliente cli;
 				cli=new GestaoCliente().procurarClienteID(listaCli, id);
-				System.out.println("ID: "+cli.getId()+"\nNome: "+cli.getNome()+"\nMorada: "+cli.getMorada()+"\nEMAIL: "+cli.getEmail()+"\nTelefone: "+cli.getTelefone());
 				break;
 				
 			case 4: //Calcular Gastos de Cliente em Vacinas
 				System.out.println("Insira o ID do cliente: ");
 				id=read.nextInt();
-				id--;
+				
 				System.out.println(new GestaoCliente().calcularGasto(listaCli, id));
 				break;
 				
-			case 5:
+			case 5: //Listar Animais de Cliente
 				System.out.println("Insira o ID do cliente: ");
 				id = read.nextInt();
 				

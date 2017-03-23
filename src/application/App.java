@@ -21,15 +21,15 @@ public class App {
 			
 			switch(opc)
 			{
-			case 1:
+			case 1: //Menu de Cliente
 					new FormCliente().menuCliente(listaCli);
 				break;
 				
-			case 2:
+			case 2: //Menu de Animal
 				new FormAnimal().menuAnimal(listaCli);
 				break;
 				
-			case 3:
+			case 3: //Menu de Ficha
 				new FormFicha().menuFicha(listaCli);
 				break;
 			}

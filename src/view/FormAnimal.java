@@ -14,37 +14,46 @@ public class FormAnimal {
 	public void menuAnimal(ArrayList<Cliente> listaCli){
 		int opc;
 		
-		do
+		if(listaCli.size()==0) //Se não existir clientes volta ao menu anterior
 		{
-			System.out.println("1 - Inserir animal\n0 - Voltar\nInsira a opcao: ");
-			opc = read.nextInt();
-			
-			switch(opc)
+			System.out.println("Precisa Inserir Clientes Primeiro!");
+			opc=0;
+		}
+		else //Se houver clientes
+		{
+			do
 			{
-			case 1:
-				String classificacao,raca,data_nasc;
-				int id;
+				System.out.println("1 - Inserir animal\n0 - Voltar\nInsira a opcao: ");
+				opc = read.nextInt();
 				
-				read.nextLine();
+				switch(opc)
+				{
+				case 1:
+					String classificacao,raca,data_nasc;
+					int id;
+					
+					read.nextLine();
+					
+					System.out.println("Insira a classificacao: ");
+					classificacao = read.nextLine();
+					System.out.println("Insira a raça: ");
+					raca = read.nextLine();
+					System.out.println("Insira a data de nascimento: ");
+					data_nasc = read.nextLine();
+					
+					do
+					{
+						System.out.println("Insira o ID do cliente a que pertence o animal: ");
+						id = read.nextInt();
+					}while(id<1 || id>listaCli.size());
+					
+					
+					new GestaoAnimal().addAnimal(listaCli, id, classificacao, raca, data_nasc);
+					break;
+				}
 				
-				System.out.println("Insira a classificacao: ");
-				classificacao = read.nextLine();
-				System.out.println("Insira a raça: ");
-				raca = read.nextLine();
-				System.out.println("Insira a data de nascimento: ");
-				data_nasc = read.nextLine();
-				
-				Animal an = new Animal(classificacao,raca,data_nasc);
-				
-				System.out.println("Insira o ID do cliente a que pertence o animal: ");
-				id = read.nextInt();
-				
-				id--;
-				
-				new GestaoAnimal().addAnimal(listaCli, id, an);
-				break;
-			}
-			
-		}while(opc!=0);
+			}while(opc!=0);
+		}
+		
 	}
 }

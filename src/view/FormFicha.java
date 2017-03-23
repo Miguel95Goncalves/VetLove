@@ -16,72 +16,77 @@ public class FormFicha {
 		int idCli,idAnim,opc;
 		String data,descricao,nome;
 		
-		do
+		if(listaCli.size()==0) //Se não existir clientes volta ao menu anterior
 		{
-			System.out.println("1 - Inserir Consulta\n2 - Inserir Vacina\n0 - Voltar\nInsira a opção: ");
-			opc = read.nextInt();
-			
-			switch(opc)
+			System.out.println("Precisa Inserir Clientes Primeiro!");
+			opc=0;
+		}
+		else //Se houver clientes
+		{
+			do
 			{
-			case 1:
+				System.out.println("1 - Inserir Consulta\n2 - Inserir Vacina\n0 - Voltar\nInsira a opção: ");
+				opc = read.nextInt();
 				
-				read.nextLine();
+				switch(opc)
+				{
+				case 1: //Inserir Consulta
+					
+					read.nextLine();
+					
+					System.out.println("Insira a data: ");
+					data=read.next();
+					
+					System.out.println("Insira a descricao: ");
+					descricao=read.next();
+					
+					read.nextLine();
+					
+					do
+					{
+						System.out.println("Insira o ID do cliente: ");
+						idCli=read.nextInt();
+					}while(idCli<1 || idCli>listaCli.size());
+					
+					do
+					{
+						System.out.println("Insira o ID do animal: ");
+						idAnim=read.nextInt();
+					}while(idAnim<1 || idAnim>listaCli.get(idCli).getAnimais().size());
+					
+					new GestaoFicha().addConsulta(listaCli, idCli, idAnim,data,descricao);
+					
+					break;
+					
+				case 2: //Inserir Vacina
+					float preco;
+					
+					read.nextLine();
+					
+					System.out.println("Insira a data: ");
+					data=read.nextLine();
+					
+					System.out.println("Insira o nome: ");
+					nome=read.nextLine();
+					
+					System.out.println("Insira o preço: ");
+					preco=read.nextFloat();
+					
+					read.nextLine();
+					
+					System.out.println("Insira o ID do cliente: ");
+					idCli=read.nextInt();
+					
+					System.out.println("Insira o ID do animal: ");
+					idAnim=read.nextInt();
+					
+					new GestaoFicha().addVacina(listaCli, idCli, idAnim,data,nome,preco);
+					
+					break;
+				}
 				
-				System.out.println("Insira a data: ");
-				data=read.next();
-				
-				System.out.println("Insira a descricao: ");
-				descricao=read.next();
-				
-				Consulta con = new Consulta(data, descricao);
-				
-				read.nextLine();
-				
-				System.out.println("Insira o ID do cliente: ");
-				idCli=read.nextInt();
-				
-				System.out.println("Insira o ID do animal: ");
-				idAnim=read.nextInt();
-				
-				idCli--;
-				idAnim--;
-				
-				new GestaoFicha().addConsulta(listaCli, idCli, idAnim,con);
-				
-				break;
-				
-			case 2:
-				float preco;
-				
-				read.nextLine();
-				
-				System.out.println("Insira a data: ");
-				data=read.nextLine();
-				
-				System.out.println("Insira o nome: ");
-				nome=read.nextLine();
-				
-				System.out.println("Insira o preço: ");
-				preco=read.nextFloat();
-				
-				Vacina vac = new Vacina(data, nome,preco);
-				
-				read.nextLine();
-				
-				System.out.println("Insira o ID do cliente: ");
-				idCli=read.nextInt();
-				
-				System.out.println("Insira o ID do animal: ");
-				idAnim=read.nextInt();
-				
-				idCli--;
-				idAnim--;
-				
-				new GestaoFicha().addVacina(listaCli, idCli, idAnim,vac);
-				
-				break;
-			}
-			
-		}while(opc!=0);
+			}while(opc!=0);
+		}
+
 	}
 }

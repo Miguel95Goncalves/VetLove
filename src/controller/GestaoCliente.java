@@ -23,15 +23,22 @@ public class GestaoCliente {
 	}
 	
 	public Cliente procurarClienteID(ArrayList<Cliente> listaCli,int id){ //Procurar Cliente por ID
+		id--;
+		
 		for(Cliente c : listaCli)
 		{
-			if(c.getId() == id) return c;
+			System.out.println("ID: "+c.getId());
+			System.out.println("Nome: "+c.getNome());
+			System.out.println("Morada: "+c.getMorada());
+			System.out.println("Email: "+c.getEmail());
+			System.out.println("Telefone: "+c.getTelefone());
 		}
 		return null;
 	}
 	
 	public float calcularGasto(ArrayList<Cliente> listaCli,int id){ //Calcular Gasto em Vacinas
 		float total=0;
+		id--;
 		
 		for(int i=0;i<listaCli.get(id).getAnimais().size();i++)
 		{
@@ -43,12 +50,20 @@ public class GestaoCliente {
 		return total;
 	}
 	
-	public Animal listarAnimaisCliente(ArrayList<Cliente> listaCli, int id){
-		for(Animal a : listaCli.get(id).getAnimais())
+	public void listarAnimaisCliente(ArrayList<Cliente> listaCli, int id){ //Listar Animais de Cliente
+		id--;
+		
+		for(Animal anim : listaCli.get(id).getAnimais())
 		{
-			return a;
+			System.out.println("Classificação: "+anim.getClassificacao());
+			System.out.println("Raça: "+anim.getRaca());
+			System.out.println("Data Nascimento: "+anim.getData_nasc());
+			if(anim.getFicha()!=null)
+			{
+				System.out.println("Número de Consultas: "+anim.getFicha().getConsultas().size());
+				System.out.println("Número de Vacinas: "+anim.getFicha().getVacinas().size());
+			}
 		}
-		return null;
 	}
 	
 }

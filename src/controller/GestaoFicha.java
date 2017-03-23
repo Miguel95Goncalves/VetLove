@@ -8,18 +8,22 @@ import model.Ficha;
 import model.Vacina;
 
 public class GestaoFicha {
-	public void addConsulta(ArrayList<Cliente> listaCli,int idCli,int idAnim,Consulta con){
+	public void addConsulta(ArrayList<Cliente> listaCli,int idCli,int idAnim,String data,String descricao){ //Adicionar Consulta
+		idCli--;
+		idAnim--;
 		
-		if(listaCli.get(idCli).getAnimais().get(idAnim).getFicha() == null) //Se o animal ainda não tiver ficha
+		if(listaCli.get(idCli).getAnimais().get(idAnim).getFicha() == null) //Se o animal ainda não tiver ficha, cria uma
 		{
 			Ficha f = new Ficha();
 			listaCli.get(idCli).getAnimais().get(idAnim).setFicha(f);
 		}
 		
-		listaCli.get(idCli).getAnimais().get(idAnim).getFicha().getConsultas().add(con);
+		listaCli.get(idCli).getAnimais().get(idAnim).getFicha().getConsultas().add(new Consulta(data, descricao));
 	}
 	
-	public void addVacina(ArrayList<Cliente> listaCli,int idCli,int idAnim,Vacina vac){
+	public void addVacina(ArrayList<Cliente> listaCli,int idCli,int idAnim,String data,String nome,float preco){ //Adicionar Vacina
+		idCli--;
+		idAnim--;
 		
 		if(listaCli.get(idCli).getAnimais().get(idAnim).getFicha() == null) //Se o animal ainda não tiver ficha
 		{
@@ -27,6 +31,6 @@ public class GestaoFicha {
 			listaCli.get(idCli).getAnimais().get(idAnim).setFicha(f);
 		}
 		
-		listaCli.get(idCli).getAnimais().get(idAnim).getFicha().getVacinas().add(vac);
+		listaCli.get(idCli).getAnimais().get(idAnim).getFicha().getVacinas().add(new Vacina(data, nome,preco));
 	}
 }
