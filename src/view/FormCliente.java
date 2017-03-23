@@ -15,12 +15,13 @@ public class FormCliente {
 		
 		do
 		{
-			System.out.println("1 - Inserir Cliente\n2 - Listar Clientes\n3 - Procurar Cliente por ID\n4 - Verificar Gastos em Vacinas\n0 - Voltar\nInsira a opção: ");
+			System.out.println("1 - Inserir Cliente\n2 - Listar Clientes\n3 - Procurar Cliente por ID\n4 - Verificar Gastos em Vacinas"
+					+ "\n5 - Listar Animais de Cliente\n0 - Voltar\nInsira a opção: "); //Menu Cliente
 			opc=read.nextInt();
 			
 			switch(opc)
 			{
-			case 1:
+			case 1: //Inserir Cliente
 				String nome,morada,email,telefone;
 				
 				read.nextLine();
@@ -37,11 +38,11 @@ public class FormCliente {
 				new GestaoCliente().addCliente(listaCli,nome,morada,email,telefone);
 				break;
 				
-			case 2:
+			case 2: //Listar Clientes
 				new GestaoCliente().listarClientes(listaCli);
 				break;
 				
-			case 3:
+			case 3: //Procurar Cliente por ID
 				int id;
 				System.out.println("Insira o ID: ");
 				id = read.nextInt();
@@ -50,11 +51,18 @@ public class FormCliente {
 				System.out.println("ID: "+cli.getId()+"\nNome: "+cli.getNome()+"\nMorada: "+cli.getMorada()+"\nEMAIL: "+cli.getEmail()+"\nTelefone: "+cli.getTelefone());
 				break;
 				
-			case 4:
+			case 4: //Calcular Gastos de Cliente em Vacinas
 				System.out.println("Insira o ID do cliente: ");
 				id=read.nextInt();
 				id--;
 				System.out.println(new GestaoCliente().calcularGasto(listaCli, id));
+				break;
+				
+			case 5:
+				System.out.println("Insira o ID do cliente: ");
+				id = read.nextInt();
+				
+				new GestaoCliente().listarAnimaisCliente(listaCli, id);
 				break;
 			}
 		}while(opc!=0);

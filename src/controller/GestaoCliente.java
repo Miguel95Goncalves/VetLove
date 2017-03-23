@@ -1,5 +1,6 @@
 package controller;
 
+import model.Animal;
 import model.Cliente;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,11 +8,11 @@ import java.util.Scanner;
 public class GestaoCliente {
 	Scanner read=(new Scanner(System.in));
 	
-	public void addCliente(ArrayList<Cliente> listaCli,String nome,String morada,String email,String telefone){
+	public void addCliente(ArrayList<Cliente> listaCli,String nome,String morada,String email,String telefone){ //Adicionar Cliente
 		listaCli.add(new Cliente(listaCli.size()+1,nome,morada,email,telefone));
 	}
 	
-	public void listarClientes(ArrayList<Cliente> listaCli){
+	public void listarClientes(ArrayList<Cliente> listaCli){ //Listar Clientes
 		for(int i=0;i<listaCli.size();i++){
 			System.out.println("ID: "+listaCli.get(i).getId());
 			System.out.println("Nome: "+listaCli.get(i).getNome());
@@ -21,7 +22,7 @@ public class GestaoCliente {
 		}
 	}
 	
-	public Cliente procurarClienteID(ArrayList<Cliente> listaCli,int id){
+	public Cliente procurarClienteID(ArrayList<Cliente> listaCli,int id){ //Procurar Cliente por ID
 		for(Cliente c : listaCli)
 		{
 			if(c.getId() == id) return c;
@@ -29,7 +30,7 @@ public class GestaoCliente {
 		return null;
 	}
 	
-	public float calcularGasto(ArrayList<Cliente> listaCli,int id){
+	public float calcularGasto(ArrayList<Cliente> listaCli,int id){ //Calcular Gasto em Vacinas
 		float total=0;
 		
 		for(int i=0;i<listaCli.get(id).getAnimais().size();i++)
@@ -40,6 +41,14 @@ public class GestaoCliente {
 			}
 		}
 		return total;
+	}
+	
+	public Animal listarAnimaisCliente(ArrayList<Cliente> listaCli, int id){
+		for(Animal a : listaCli.get(id).getAnimais())
+		{
+			return a;
+		}
+		return null;
 	}
 	
 }
